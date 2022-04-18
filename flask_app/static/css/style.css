@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Index Styles */
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    margin-top: 50px;
+}
+
+.col {
+    flex: 1;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.formBox {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    gap: 25px;
+    border-radius: 6px;
+    width: 250px;
+}
+
+.formBox form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formBox button {
+    width: 100px;
+    align-self: center;
+}
+
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+/* header styles */
+header {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid black;
+}
+
+header nav {
+    display: flex;
+    gap: 25px;
+}
+
+/* content styles */
+
+.content {
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+/* dashboard styles */
+
+.dashboardDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    padding: 25px;
+    border-radius: 6px;
+}
+
+.dashboardDisplay table, tr, th, td {
+    border: 1px solid black;
+}
+
+.dashboardDisplay tr, th, td {
+    padding: 5px;
+}
+
+#actions {
+    text-align: center;
+}
+
+/* edit styles */
+.editDisplay {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.editDisplay form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.editDisplay textarea {
+    resize: none;
+}
+
+/* show recipe styles */
+
+.recipeShow {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.recipeDetails {
+    display: flex;
+    gap: 25px;
+    padding: 10px;
+    border: 3px solid black;
+}
+
+.recipeLeftCol {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.recipeRightCol {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

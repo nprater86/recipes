@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/css/style.css')}}">
+    <title>Recipes | Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="col">
+                <div class="formBox">
+                    <h1>Register</h1>
+                    <form action="/reg_login" method="post">
+                        <input type="hidden" name="which_form" value="register">
+                        <div class="formWrapper">
+                            <label for="first_name">First Name: </label>
+                            <input type="text" name="first_name" id="">
+                        </div>
+                        <div class="formWrapper">
+                            <label for="last_name">Last Name: </label>
+                            <input type="text" name="last_name" id="">
+                        </div>
+                        <div class="formWrapper">
+                            <label for="email">Email: </label>
+                            <input type="email" name="email" id="">
+                        </div>
+                        <div class="formWrapper">
+                            <label for="password">Password: </label>
+                            <input type="password" name="password" id="">
+                        </div>
+                        <div class="formWrapper">
+                            <label for="password_check">Confirm Password: </label>
+                            <input type="password" name="password_check">
+                        </div>
+                        <button type="submit">Register</button>
+                    </form>
+                </div>
+                {% with errors = get_flashed_messages(category_filter=["register_error"]) %}
+                    {% if errors %}
+                        {% for message in errors %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="col">
+                <div class="formBox">
+                    <h1>Login</h1>
+                    <form action="/reg_login" method="post">
+                        <input type="hidden" name="which_form" value="login">
+                        <div class="formWrapper">
+                            <label for="email">Email: </label>
+                            <input type="text" name="email" id="">
+                        </div>
+                        <div class="formWrapper">
+                            <label for="password">Password: </label>
+                            <input type="password" name="password" id="">
+                        </div>
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+                {% with errors = get_flashed_messages(category_filter=["login_error"]) %}
+                    {% if errors %}
+                        {% for message in errors %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

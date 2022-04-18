@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/css/style.css')}}">
+    <title>{{recipe.name}}</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome {{session["first_name"]}}!</h1>
+        <nav>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <div class="content">
+        <div class="recipeShow">
+            <h1>{{recipe.name}}</h1>
+            <div class="recipeDetails">
+                <div class="recipeLeftCol">
+                    <p>Description:</p>
+                    <p>Under 30 minutes:</p>
+                    <p>Instructions:</p>
+                    <p>Date Made:</p>
+                </div>
+                <div class="recipeRightCol">
+                    <p>{{recipe.description}}</p>
+                    <p>{% if recipe.under_30_min == "y": %} Yes {% else: %} No {% endif %}</p>
+                    <p>{{ recipe.instructions }}</p>
+                    <p>{{ recipe.date_made.strftime("%b %d, %Y") }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

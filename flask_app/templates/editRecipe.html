@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/css/style.css')}}">
+    <title>Edit {{recipe.name}}</title>
+</head>
+<body>
+    <header>
+        <h1>Edit Recipe</h1>
+        <nav>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <div class="content">
+        <div class="editDisplay">
+            <form action="/recipes/update/{{recipe.id}}" method="post">
+                <div class="formWrapper">
+                    <label for="name">Name: </label>
+                    <input type="text" name="name" id="" value="{{recipe.name}}">
+                </div>
+                <div class="formWrapper">
+                    <label for="description">Description: </label>
+                    <textarea name="description" cols="50" rows="5">{{recipe.description}}</textarea>
+                </div>
+                <div class="formWrapper">
+                    <label for="instructions">Instructions: </label>
+                    <textarea name="instructions" cols="50" rows="10">{{recipe.instructions}}</textarea>
+                </div>
+                <div class="formWrapper">
+                    <label for="date_made">Date Made On:</label>
+                    <input type="date" name="date_made" id="" value="{{recipe.date_made}}">
+                </div>
+                <div class="radioWrapper">
+                    <p>Under 30 minutes?</p>
+                    <input type="radio" name="under_30_min" id="y" value="y" {% if recipe.under_30_min == "y": %} checked="checked" {% endif %}>
+                    <label for="y">Yes</label>
+                    <input type="radio" name="under_30_min" id="n" value="n" {% if recipe.under_30_min == "n": %} checked="checked" {% endif %}>
+                    <label for="n">No</label>
+                </div>
+                <button type="submit">Update</button>
+            </form>
+            {% with errors = get_flashed_messages(category_filter=["recipe_error"]) %}
+                {% if errors %}
+                    {% for message in errors %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>
