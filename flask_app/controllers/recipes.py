@@ -2,6 +2,10 @@ from flask_app import app
 from flask import render_template,redirect,request,session,flash
 from flask_app.models.recipe import Recipe
 
+#===============================
+# Create Recipe Routes
+#===============================
+
 @app.route('/recipes/new')
 def new_recipe():
     if "id" not in session:
@@ -27,6 +31,10 @@ def create_recipe():
 
     return redirect('/dashboard')
 
+#===============================
+# Show Recipe Route
+#===============================
+
 @app.route('/recipes/<recipe_id>')
 def show_recipe(recipe_id):
     if "id" not in session:
@@ -35,6 +43,10 @@ def show_recipe(recipe_id):
     data = {"id":recipe_id}
     recipe = Recipe.get_recipe_by_id(data)
     return render_template('showRecipe.html', recipe=recipe)
+
+#===============================
+# Update Recipe Routes
+#===============================
 
 @app.route('/recipes/edit/<recipe_id>')
 def edit_recipe_form(recipe_id):
@@ -66,6 +78,10 @@ def edit_recipe(recipe_id):
     Recipe.update(data)
 
     return redirect('/dashboard')
+
+#===============================
+# Delete Recipe Route
+#===============================
 
 @app.route ('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):

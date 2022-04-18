@@ -5,11 +5,19 @@ from flask_app.models.recipe import Recipe
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
+#===============================
+# Landing Page
+#===============================
+
 @app.route('/')
 def index():
     if "first_name" in session:
         return redirect('/dashboard')
     return render_template('index.html')
+
+#===============================
+# Login / Register Route
+#===============================
 
 @app.route('/reg_login', methods=["POST"])
 def reg_login():
@@ -62,6 +70,10 @@ def reg_login():
 
     return redirect('/')
 
+#===============================
+# Dashboard Route
+#===============================
+
 @app.route('/dashboard')
 def dashboard():
     if "id" not in session:
@@ -72,6 +84,10 @@ def dashboard():
     recipes = Recipe.get_all()
     print(recipes[0])
     return render_template('dashboard.html', user = user, recipes=recipes)
+
+#===============================
+# Logout Route
+#===============================
 
 @app.route('/logout')
 def logout():
